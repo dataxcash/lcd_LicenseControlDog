@@ -307,9 +307,10 @@
       font-weight: 700;
       margin-bottom: 24px;
       letter-spacing: -0.02em;
-      background: linear-gradient(to bottom right, #fff, #94a3b8);
+      background: linear-gradient(to bottom right, #22d3ee, #6366f1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
     }
 
     .hero-subtitle {
@@ -476,7 +477,7 @@
     .section {
       margin-top: 32px;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
       align-items: flex-start;
     }
@@ -515,6 +516,23 @@
     .card-inner {
       position: relative;
       z-index: 1;
+    }
+
+    .lcd-interface-img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 15px 0;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    }
+
+    .interface-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #22d3ee;
+      margin: 15px 0 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .steps-list {
@@ -661,6 +679,29 @@
         grid-template-columns: minmax(0, 1fr);
       }
     }
+    
+    /* Visual elements for LCD interface */
+    .interface-diagram {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .interface-element {
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.7rem;
+    }
+    
+    .interface-element .title {
+      font-weight: 600;
+      color: #22d3ee;
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
@@ -681,11 +722,11 @@
       <div class="header-cta">
         <div class="pill">
           <span class="pill-dot"></span>
-          <span>Designed to work with LCC &amp; LMF</span>
+          <span>LCC & LMF</span>
         </div>
-        <a class="btn" href="../release/" title="Download LCD binaries">
+        <a class="btn" href="downloads/lcd_linux_x64_v0.99" title="Download LCD binaries" download>
           <span class="icon">&gt;_</span>
-          <span>Download Binaries</span>
+          <span>Download</span>
         </a>
       </div>
     </header>
@@ -694,13 +735,11 @@
       <div class="hero-card">
         <h1 class="hero-title">License Control Dog</h1>
         <p class="hero-subtitle">
-          Cyber-native licensing agent.
-          <br>
-          Designed for local deployments, synchronized with LCC & LMF.
+          Cyber-native licensing agent for local deployments.
         </p>
 
         <div class="hero-actions">
-          <a class="btn" href="../release/">
+          <a class="btn" href="downloads/lcd_linux_x64_v0.99" download>
             <span class="icon">&gt;_</span>
             <span>Download Binaries</span>
           </a>
@@ -708,7 +747,6 @@
       </div>
 
       <div class="simple-topo">
-        <!-- App connects to LCC -->
         <div class="app-block">
           <div class="app-arrow"></div>
           YOUR APP
@@ -735,105 +773,74 @@
       </div>
     </main>
 
-    <section class="section" id="getting-started">
+    <section class="section">
       <div>
-        <h2 class="section-title"><span class="icon">&#9632;</span>Getting started with LCD</h2>
+        <h2 class="section-title"><span class="icon">&#9632;</span>LCD Web Interface</h2>
+        <div class="card">
+          <div class="card-inner">
+            <img src="../screenshots/lcd_web_interface.png" alt="LCD Web Interface" class="lcd-interface-img">
+            
+            <div class="interface-diagram">
+              <div class="interface-element">
+                <div class="title">LCC ADDR</div>
+                <div>Configure LCC connection</div>
+              </div>
+              <div class="interface-element">
+                <div class="title">RUNTIME</div>
+                <div>Status & uptime</div>
+              </div>
+              <div class="interface-element">
+                <div class="title">SYNC</div>
+                <div>Monitor sync status</div>
+              </div>
+              <div class="interface-element">
+                <div class="title">MESSAGES</div>
+                <div>Event log</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <h2 class="section-title"><span class="icon">&#9632;</span>Quick Start</h2>
         <div class="card">
           <div class="card-inner">
             <div class="steps-list">
               <div class="step-item">
                 <div class="step-index">1</div>
                 <div class="step-body">
-                  <div class="step-title">Pick the right binary</div>
-                  <div class="step-text">
-                    Go to the <strong>release/</strong> directory in this
-                    repository (or the GitHub Release page) and download the
-                    LCD binary that matches your target platform.
-                  </div>
-                  <div class="code-fragment">release/linux-amd64/lcd &nbsp;&nbsp;# platform example only</div>
+                  <div class="step-title">Download</div>
+                  <div class="step-text">Get the right binary for your platform</div>
                 </div>
               </div>
 
               <div class="step-item">
                 <div class="step-index">2</div>
                 <div class="step-body">
-                  <div class="step-title">Place it next to your application</div>
-                  <div class="step-text">
-                    Deploy LCD alongside your service or application, following
-                    your internal deployment guidelines. The exact invocation
-                    flags and configuration are defined by your team&rsquo;s
-                    operations playbook.
-                  </div>
+                  <div class="step-title">Deploy</div>
+                  <div class="step-text">Place next to your application</div>
                 </div>
               </div>
 
               <div class="step-item">
                 <div class="step-index">3</div>
                 <div class="step-body">
-                  <div class="step-title">Connect to LCC</div>
-                  <div class="step-text">
-                    In a typical setup, LCD communicates with the License
-                    Control Center running in your environment. Configuration of
-                    addresses, credentials, and trust anchors is handled outside
-                    of this public documentation.
-                  </div>
+                  <div class="step-title">Connect</div>
+                  <div class="step-text">Configure LCC address</div>
                 </div>
               </div>
 
               <div class="step-item">
                 <div class="step-index">4</div>
                 <div class="step-body">
-                  <div class="step-title">Integrate from your code</div>
-                  <div class="step-text">
-                    Your application calls into LCD through a narrow interface
-                    (for example, a local HTTP or IPC endpoint) to check whether
-                    a given feature, tenant, or operation is licensed.
-                  </div>
+                  <div class="step-title">Integrate</div>
+                  <div class="step-text">Call LCD from your app</div>
                 </div>
               </div>
             </div>
-
-            <p class="note">
-              <strong>Important:</strong> this site only covers the conceptual
-              flow. Exact command-line flags, configuration formats, and
-              integration snippets should be kept in your internal engineering
-              documentation, not in this public repo.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h2 class="section-title"><span class="icon">&#9632;</span>Component Roles</h2>
-        <div class="card">
-          <div class="card-inner">
-            <div class="grid-two">
-              <div class="mini-card">
-                <strong>License Control Center (LCC)</strong>
-                <p>
-                  The central local hub. Applications connect here (via SDK) to check permissions.
-                  LCC aggregates data and manages the local license pool.
-                </p>
-              </div>
-              <div class="mini-card">
-                <strong>LMF / upstream</strong>
-                <p>
-                  The global authority. LCC connects upstream to LMF to fetch
-                  licenses, report usage, and synchronize entitlements.
-                </p>
-              </div>
-            </div>
-
-            <div class="pill-row">
-              <span class="mini-pill">Apps &rarr; connect to LCC (via SDK)</span>
-              <span class="mini-pill">LCD &rarr; reports device fingerprint to LCC</span>
-              <span class="mini-pill">LCC &rarr; syncs with LMF</span>
-            </div>
-
-            <p class="note">
-              In this architecture, <strong>LCD</strong> acts as a hardware probe and environment monitor,
-              ensuring LCC is bound to the correct physical device, while applications interact solely with LCC.
-            </p>
           </div>
         </div>
       </div>
@@ -842,7 +849,6 @@
     <footer class="site-footer">
       <div class="footer-left">
         <span>&copy; <span id="year"></span> LCD / License Control Dog.</span>
-        <span>Docs for public distribution only.</span>
       </div>
       <div class="footer-right">runtime://lcd-agent &gt; status: guarded</div>
     </footer>

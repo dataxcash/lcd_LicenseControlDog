@@ -22,6 +22,8 @@ At a high level, LCD focuses on:
 - Providing a secure, minimal interface to check license status.
 - Working in both **online** and **intermittent/offline** scenarios (depending on how it is configured together with LCC/LMF).
 
+![LCD Web Interface](screenshots/lcd_web_interface.png)
+
 This repository gives you:
 
 - Downloadable LCD binaries for different operating systems.
